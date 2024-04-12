@@ -10,16 +10,8 @@
 // il porte le nom de la clef de session
 session_start();
 
-// la session est vide au début de la connexion serveur/client
-// var_dump($_SESSION);
-
-// affichage de l'id de session (PHPSESSID)
-// echo session_id();
-
-// création d'une variable de session en utilisant la 
-// variable globale $_SESSION qui est de type array
-
-// $_SESSION['laDate'] = date("Y-m-d H:i:s");
+if(isset($_SESSION['nbPage']))  $_SESSION['nbPage']++;
+if(isset($_SESSION['log'])) $_SESSION['log'][] = $_SERVER['REMOTE_ADDR']. " | ". date("Y-m-d H:i:s") . " | ". __FILE__."\n";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,6 +32,7 @@ session_start();
     ?>
     <h2>Bienvenue <?=$_SESSION['name']?></h2>
     <?php
+    var_dump($_SESSION);
     endif;
     include "menu.inc.php";
     ?>

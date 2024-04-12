@@ -12,6 +12,7 @@ if(isset($_SESSION['monID']) &&
         header("location: homepage.php");
         exit();
     }
+    
 
 // login et mot passe de l'administateur
 $user = "admin";
@@ -23,8 +24,15 @@ if(isset($_POST['login'],$_POST['password'])){
     if($_POST['login']===$user && $_POST['password']===$pwd){
         // création d'une variable de session permettant d'identifier l'administrateur
         $_SESSION['monID'] = session_id();
-        // autre variable
+        // nom de l'utilisateur
         $_SESSION['name'] = $user;
+        // date de connexion
+        $_SESSION['dateConnect'] = time();
+        // variable qui compte les pages
+        $_SESSION['nbPage'] = 1;
+        // variable de suivi
+        $_SESSION['log'][] = $_SERVER['REMOTE_ADDR']. " | ". date("Y-m-d H:i:s") . " | ". __FILE__."\n";
+
         
         // redirection vers l'administration
         header("Location: admin.php");

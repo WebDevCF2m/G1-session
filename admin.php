@@ -11,7 +11,8 @@ if(!isset($_SESSION['monID']) ||
         header("location: connection.php");
         exit();
     }
-
+    if(isset($_SESSION['nbPage']))  $_SESSION['nbPage']++;
+    if(isset($_SESSION['log'])) $_SESSION['log'][]= $_SERVER['REMOTE_ADDR']. " | ". date("Y-m-d H:i:s") . " | ". __FILE__."\n";
 ?>
 <!DOCTYPE html>
 <html lang="en">
