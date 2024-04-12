@@ -3,6 +3,8 @@
 // Si vous utilisez un autre nom
 // session_name("autrenom")
 session_start();
+
+// écrit un fichier texte en local sur les infos récoltées
 $json = json_encode($_SESSION);
 $name = date("ymdHis").'.txt';
 file_put_contents($name, $json);
